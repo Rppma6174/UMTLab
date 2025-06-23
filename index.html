@@ -27,7 +27,6 @@
         /* Header */
         .header {
             padding: 20px 0 30px 0;
-            /* Menghilangkan border-bottom yang menyebabkan garis */
         }
 
         .breadcrumb {
@@ -59,6 +58,82 @@
             font-weight: 500;
         }
 
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            color: #007bff;
+        }
+
+        .dropdown-arrow {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #333;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-item:hover {
+            background: #007bff;
+            color: white;
+        }
+
         .title {
             font-size: 2rem;
             font-weight: 700;
@@ -70,12 +145,10 @@
             display: flex;
             gap: 0;
             margin-bottom: 20px;
-            /* Menghilangkan border-bottom dari nav-tabs juga */
             overflow-x: auto;
             position: relative;
         }
 
-        /* Menambahkan garis bawah yang lebih subtle hanya untuk area tab */
         .nav-tabs::after {
             content: '';
             position: absolute;
@@ -290,6 +363,10 @@
                 padding: 10px 16px;
                 font-size: 14px;
             }
+
+            .dropdown-menu {
+                min-width: 180px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -439,7 +516,21 @@ footer::before {
             <nav class="breadcrumb">
                 <a href="https://www.umt6174.site/" class="breadcrumb-link" target="_blank">Home</a>
                 <span class="breadcrumb-arrow">›</span>
-                <span class="breadcrumb-current">UMT Lab</span>
+                <div class="dropdown" id="umtDropdown">
+                    <span class="dropdown-toggle">
+                        UMT Lab
+                        <span class="dropdown-arrow">▼</span>
+                    </span>
+                    <div class="dropdown-menu">
+                        <a href="https://www.umt6174.site/" class="dropdown-item">Home</a>
+                        <a href="https://lab.umt6174.site/umt-lab" class="dropdown-item">UMT Lab</a>
+                        <a href="https://sites.google.com/view/banksoalumt6174/bank-soal-umt" class="dropdown-item">Bank Soal UMT</a>
+                        <a href="https://www.umt6174.site/materi-belajar" class="dropdown-item">Materi Pembelajaran</a>
+                        <a href="https://www.umt6174.site/video-pembelajaran" class="dropdown-item">Video Pembelajaran</a>
+                        <a href="https://www.umt6174.site/tryout-umt" class="dropdown-item">Tryout</a>
+                        <a href="https://www.umt6174.site/tanya-umt" class="dropdown-item">TanyaUMT</a>
+                    </div>
+                </div>
             </nav>
             <h1 class="title">UMT Lab</h1>
             
@@ -680,7 +771,26 @@ footer::before {
             searchInput.focus();
         });
 
-        // Home link functionality
+        // Dropdown functionality
+        const dropdown = document.getElementById('umtDropdown');
+        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Prevent dropdown from closing when clicking inside the menu
+        dropdown.querySelector('.dropdown-menu').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
     </script>
 </body>
 </html>
