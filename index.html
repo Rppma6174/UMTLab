@@ -223,6 +223,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
+            min-height: 600px;
         }
 
         .card {
@@ -326,6 +327,193 @@
             background: #28a745;
             color: white;
         }
+/* Tag Gratis */
+.tag-free {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    border: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+}
+
+.tag-free:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+/* Tag Premium */
+.tag-premium {
+    background: linear-gradient(135deg, #007bff, #6f42c1);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+    border: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+}
+
+.tag-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.tag-premium:hover::before {
+    left: 100%;
+}
+
+.tag-premium:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+/* Variasi dengan Icon */
+.tag-free-icon::before {
+    content: '🆓';
+    margin-right: 4px;
+}
+
+.tag-premium-icon::before {
+    content: '⭐';
+    margin-right: 4px;
+}
+
+/* Variasi Outline */
+.tag-free-outline {
+    background: transparent;
+    color: #28a745;
+    border: 2px solid #28a745;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.tag-free-outline:hover {
+    background: #28a745;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.tag-premium-outline {
+    background: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.tag-premium-outline:hover {
+    background: #007bff;
+    color: white;
+    transform: translateY(-1px);
+}
+
+
+        /* Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .pagination-btn {
+            background: #333;
+            border: 1px solid #444;
+            color: #888;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            min-width: 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination-btn:hover:not(.disabled) {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .pagination-btn.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .pagination-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-ellipsis {
+            color: #888;
+            padding: 10px 5px;
+            font-size: 14px;
+        }
+
+        .pagination-nav {
+            background: #333;
+            border: 1px solid #444;
+            color: #888;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .pagination-nav:hover:not(.disabled) {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .pagination-nav.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -367,6 +555,18 @@
             .dropdown-menu {
                 min-width: 180px;
             }
+
+            .pagination-container {
+                gap: 5px;
+                margin: 20px 0;
+            }
+
+            .pagination-btn,
+            .pagination-nav {
+                padding: 8px 12px;
+                font-size: 12px;
+                min-width: 35px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -379,6 +579,17 @@
             .card-image {
                 width: 80px;
                 height: 100px;
+            }
+
+            .pagination-container {
+                gap: 3px;
+            }
+
+            .pagination-btn,
+            .pagination-nav {
+                padding: 6px 10px;
+                font-size: 11px;
+                min-width: 30px;
             }
         }
 
@@ -406,108 +617,107 @@
         .card:nth-child(6) { animation-delay: 0.6s; }
 
         /* bagian footer  */
-
         footer {
-    background-color: #141414;
-    color: white;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-}
+            background-color: #141414;
+            color: white;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
 
-footer::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: linear-gradient(to bottom, rgba(28, 28, 28, 1) 0%, rgba(28, 28, 28, 0) 100%);
-}
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(28, 28, 28, 1) 0%, rgba(28, 28, 28, 0) 100%);
+        }
 
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-}
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
 
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-}
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
 
-.footer-section h3 {
-    color: white;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
 
-.footer-section ul li {
-    margin-bottom: 8px;
-}
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
 
-.footer-section ul li a {
-    text-decoration: none;
-    color: #bbb;
-    transition: color 0.3s;
-    font-size: 14px;
-}
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #bbb;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
 
-.footer-section ul li a:hover {
-    color: white;
-}
+        .footer-section ul li a:hover {
+            color: white;
+        }
 
-.contact-list img {
-    width: 16px;
-    vertical-align: middle;
-    margin-right: 8px;
-}
+        .contact-list img {
+            width: 16px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
 
-.footer-bottom {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #444;
-    margin-top: 20px;
-    padding-top: 10px;
-}
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #444;
+            margin-top: 20px;
+            padding-top: 10px;
+        }
 
-.social-icons {
-    display: flex;
-    gap: 10px;
-}
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
 
-.social-icons a img {
-    width: 24px;
-    transition: opacity 0.3s;
-}
+        .social-icons a img {
+            width: 24px;
+            transition: opacity 0.3s;
+        }
 
-.social-icons a img:hover {
-    opacity: 0.7;
-}
+        .social-icons a img:hover {
+            opacity: 0.7;
+        }
 
-/* Agar footer tetap responsif di layar kecil */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-}
+        /* Agar footer tetap responsif di layar kecil */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -548,248 +758,501 @@ footer::before {
             </div>
 
             <div class="cards-grid" id="cardsGrid">
-                <div class="card" data-category="analisis-kajian" data-link="https://drive.google.com/file/d/1cFUdadf1xwsveMSKxZd4tngAptWQ-gfX/view?usp=drive_link">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <span><img src="10.jpg" alt=""></span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Penerapan Matematika dalam Menentukan Harga Optimal Produk</h3>
-                            <p class="card-author">Tim UMT</p>
-                            <span class="card-tag tag-analisis-kajian">Analisis Dan Kajian</span>
-                        </div>
-                    </div>
-                </div>
+                <!-- Cards akan diisi oleh JavaScript -->
+            </div>
 
-                <div class="card" data-category="analisis-kajian" data-link="https://drive.google.com/file/d/12_wtPqafmJqzJduG0R65Twmn4DEbG-el/view?usp=drive_link">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <span><img src="8.jpg" alt=""></span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Barisan Aritmetika untuk Perencanaan Keuangan</h3>
-                            <p class="card-author">Tim UMT</p>
-                            <span class="card-tag tag-analisis-kajian">Analisis Dan Kajian</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="eksplorasi-teori" data-link="https://drive.google.com/file/d/1E1AJvryMb3iJRLFkKC-gb3nTQwvLp4Te/view?usp=drive_link">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <span><img src="3.png" alt=""></span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Menemukan titik maksimum dan minimum hanya dengan turunan pertama</h3>
-                            <p class="card-author">Tim UMT</p>
-                            <span class="card-tag tag-eksplorasi-teori">Eksplorasi Teori</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="analisis-kajian" data-link="https://drive.google.com/file/d/1OzE9LsH3RxDKVR1Z7MowHPH6dboR8TYe/view?usp=drive_link">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <span><img src="9.jpg" alt=""></span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Model Permintaan dan Penawaran</h3>
-                            <p class="card-author">Tim UMT</p>
-                            <span class="card-tag tag-analisis-kajian">Analisis Dan Kajian</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="eksplorasi-teori" data-link="https://drive.google.com/file/d/1iYry-a2xzAADy7E88DIwUHgtJ-VSTjHk/view?usp=drive_link">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <span><img src="2.png" alt=""></span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Pertidaksamaan : Hal yang perlu di ketahui dalam bentuk bentuk pertidaksamaan</h3>
-                            <p class="card-author">Tim UMT</p>
-                            <span class="card-tag tag-eksplorasi-teori">Eksplorasi Teori</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="eksplorasi-teori" data-link="https://drive.google.com/file/d/1unJoepSow944g00i1bOIQEP17zjmggG8/view?usp=drive_link">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <span><img src="5.png" alt=""></span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Memahami Sistem Persamaann Linear Dan Penyelesaiannya</h3>
-                            <p class="card-author">Tim UMT</p>
-                            <span class="card-tag tag-eksplorasi-teori">Eksplorasi Teori</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="eksplorasi-teori" data-link="https://drive.google.com/file/d/12Low93pyZWN0FPWaoOkiCaoaZu4Lf2As/view?usp=drive_link">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <span><img src="7.png" alt=""></span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Pengaruh Nilai Diskriminan(D) pada grafik fungsi kuadrat</h3>
-                            <p class="card-author">Tim UMT</p>
-                            <span class="card-tag tag-eksplorasi-teori">Eksplorasi Teori</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="eksplorasi-teori" data-link="https://drive.google.com/file/d/113AdF29XwLwzuXHkW9x6iSQMjiEqAf8K/view?usp=drive_link">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <span><img src="6.png" alt=""></span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Pengaruh Nilai a pada grafik fungsi kuadrat</h3>
-                            <p class="card-author">Tim UMT</p>
-                            <span class="card-tag tag-eksplorasi-teori">Eksplorasi Teori</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- Pagination -->
+            <div class="pagination-container" id="paginationContainer">
+                <!-- Pagination akan diisi oleh JavaScript -->
             </div>
         </main>
 
         <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-            <h3>Tentang Kami</h3>
-            <ul>
-                <li><a href="https://www.umt6174.site/tentang-umt">Tentang UMT</a></li>
-            </ul>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Tentang Kami</h3>
+                    <ul>
+                        <li><a href="https://www.umt6174.site/tentang-umt">Tentang UMT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Produk UMT</h3>
+                    <ul>
+                        <li><a href="https://www.umt6174.site/umt-lab">UMT Lab</a></li>
+                        <li><a href="https://www.umt6174.site/materi-belajar">Materi Pembelajaran</a></li>
+                        <li><a href="https://www.umt6174.site/video-pembelajaran">Video Pembelajaran</a></li>
+                        <li><a href="https://www.umt6174.site/tryout-umt">Tryout</a></li>
+                        <li><a href="https://www.umt6174.site/tanya-umt">TanyaUMT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Punya Pertanyaan?</h3>
+                    <ul class="contact-list">
+                        <li><a href="https://ig.me/m/umt.6174"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">@umt.6174</a></li>
+                        <li><a href="mailto:business@gradient.academy"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email"> umt.math.6174@gmail.com</a></li>
+                        <li><a href="https://wa.me/6282189524610"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"> +6282189524610</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-section">
-            <h3>Produk UMT</h3>
-            <ul>
-                <li><a href="https://www.umt6174.site/umt-lab">UMT Lab</a></li>
-                <li><a href="https://www.umt6174.site/materi-belajar">Materi Pembelajaran</a></li>
-                <li><a href="https://www.umt6174.site/video-pembelajaran">Video Pembelajaran</a></li>
-                <li><a href="https://www.umt6174.site/tryout-umt">Tryout</a></li>
-                <li><a href="https://www.umt6174.site/tanya-umt">TanyaUMT</a></li>
-            </ul>
+            <div class="footer-bottom">
+                <p>© 2025 UMT Academy. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="https://youtube.com/@umt6174?si=Cdivet0_By8EWJ8v"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+                    <a href="https://www.instagram.com/umt.6174/"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/@umt6174?is_from_webapp=1&sender_device=pc"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" alt="TikTok"></a>
+                </div>
             </div>
-            <div class="footer-section">
-            <h3>Punya Pertanyaan?</h3>
-            <ul class="contact-list">
-              <li><a href="https://ig.me/m/umt.6174"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">@umt.6174</a></li>
-              <li><a href="mailto:business@gradient.academy"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email"> umt.math.6174@gmail.com</a></li>
-              <li><a href="https://wa.me/6282189524610"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"> +6282189524610</a></li>
-            </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-        <p>© 2025 UMT Academy. All rights reserved.</p>
-        <div class="social-icons">
-          <a href="https://youtube.com/@umt6174?si=Cdivet0_By8EWJ8v"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
-          <a href="https://www.instagram.com/umt.6174/"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
-          <a href="https://www.tiktok.com/@umt6174?is_from_webapp=1&sender_device=pc"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" alt="TikTok"></a>
-        </div>
-        </div>
         </footer>
     </div>
 
-    
-    
     <script>
-        // Tab functionality
-        const tabs = document.querySelectorAll('.nav-tab');
-        const cards = document.querySelectorAll('.card');
+        // Data kartu
+        const cardsData = [
+            // analisis dan kajian
+            {
+                id: 10,
+                title: "Penerapan Matematika dalam Menentukan Harga Optimal Produk",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                free: "premium",
+                image: "9.jpg",
+                link: "https://drive.google.com/file/d/1cFUdadf1xwsveMSKxZd4tngAptWQ-gfX/view?usp=drive_link"
+            },
+            {
+                id: 13,
+                title: "Barisan Aritmetika untuk Perencanaan Keuangan",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                free: "premium",
+                image: "8.jpg",
+                link: "https://drive.google.com/file/d/12_wtPqafmJqzJduG0R65Twmn4DEbG-el/view?usp=drive_link"
+            },
+            {
+                id: 3,
+                title: "Model Permintaan dan Penawaran",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                free: "premium",
+                image: "10.jpg",
+                link: "https://drive.google.com/file/d/1OzE9LsH3RxDKVR1Z7MowHPH6dboR8TYe/view?usp=drive_link"
+            },
+            {
+                id: 9,
+                title: "Trigonometri dalam Analisis Gelombang",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                image: "Trigonometri dalam Analisis Gelombang-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/17qXNtM6nOk5C3g9X7GM6QDYoqyFKDDZ5/view"
+            },
+            {
+                id: 1,
+                title: "Probabilitas dalam Pengambilan Keputusan",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                free: "free",
+                image: "Probabilitas dalam Pengambilan Keputusan-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/1aSgtsF96M8VnFdjImBJIwS4fSs1ppJvY/view?usp=sharing"
+            },
+            {
+                id: 2,
+                title: "Perbandingan dan Proporsi dalam Resep Masakan dan Nutrisi",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                free: "free",
+                image: "Perbandingan dan Proporsi dalam Resep Masakan dan Nutrisi-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/17LF0oMFszhFVC96yg-xEHTqtHOCWeN5x/view?usp=sharing"
+            },
+            {
+                id: 15,
+                title: "Penerapan Persen dalam Diskon Belanja dan Cashback",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                free: "premium",
+                image: "Penerapan Persen dalam Diskon Belanja dan Cashback-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/1d-oidLY1A8u6VO7ckTi6Cn9zhOiLMaNi/view?usp=sharing"
+            },
+            {
+                id: 17,
+                title: "Matematika dalam Kriptografi dan Keamanan Data",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                free: "premium",
+                image: "Matematika dalam Kriptografi dan Keamanan Data-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/1cRP51cSq1TnG40iWYHCS28AoCZ2T6CDx/view?usp=sharing"
+            },
+            {
+                id: 17,
+                title: "Geometri dalam Penataan Ruang dan Furniture",
+                author: "Tim UMT",
+                category: "analisis-kajian",
+                free: "premium",
+                image: "Geometri dalam Penataan Ruang dan Furniture-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/18NubKvrOOdi1iQDuTKIawZoZKWy_tuVS/view?usp=sharing"
+            },
+            
+            
+            // eksplorasi teori
+            {
+                id: 4,
+                title: "Menemukan titik maksimum dan minimum hanya dengan turunan pertama",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "premium",
+                image: "1.png",
+                link: "https://drive.google.com/file/d/1E1AJvryMb3iJRLFkKC-gb3nTQwvLp4Te/view?usp=drive_link"
+            },
+            
+            {
+                id: 5,
+                title: "Pertidaksamaan : Hal yang perlu di ketahui dalam bentuk bentuk pertidaksamaan",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "premium",
+                image: "2.png",
+                link: "https://drive.google.com/file/d/1iYry-a2xzAADy7E88DIwUHgtJ-VSTjHk/view?usp=drive_link"
+            },
+            {
+                id: 6,
+                title: "Memahami Sistem Persamaann Linear Dan Penyelesaiannya",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "premium",
+                image: "3.png",
+                link: "https://drive.google.com/file/d/1unJoepSow944g00i1bOIQEP17zjmggG8/view?usp=drive_link"
+            },
+            {
+                id: 7,
+                title: "Pengaruh Nilai Diskriminan(D) pada grafik fungsi kuadrat",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "premium",
+                image: "6.png",
+                link: "https://drive.google.com/file/d/12Low93pyZWN0FPWaoOkiCaoaZu4Lf2As/view?usp=drive_link"
+            },
+            {
+                id: 8,
+                title: "Pengaruh Nilai a pada grafik fungsi kuadrat",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "premium",
+                image: "7.png",
+                link: "https://drive.google.com/file/d/113AdF29XwLwzuXHkW9x6iSQMjiEqAf8K/view?usp=drive_link"
+            },
+            {
+                id: 11,
+                title: "Matriks dan Aplikasinya dalam Sistem Linear",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "premium",
+                image: "MatriksdanAplikasinyadalamSistemLinear-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/1BAIvhCUxOv28zijUWU9Dp-qNZbjVSM9z/view?usp=sharing"
+            },
+            {
+                id: 12,
+                title: "Statistika Deskriptif untuk Analisis Data",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "free",
+                image: "Statistika Deskriptif untuk Analisis Data-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/1adG2PFd1fxStIy3uZRK9lNQ7D_8u2Mw6/view?usp=sharing"
+            },
+            {
+                id: 14,
+                title: "Geometri Analitik dalam Koordinat Kartesian",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "premium",
+                image: "Geometri dalam Penataan Ruang dan Furniture-1_page-0001.jpg",
+                link: "#"
+            },
+            {
+                id: 16,
+                title: "Kalkulus Diferensial untuk Optimisasi",
+                author: "Tim UMT",
+                category: "eksplorasi-teori",
+                free: "free",
+                image: "Kalkulus Diferensial untuk Optimisas-1_page-0001.jpg",
+                link: "https://drive.google.com/file/d/1nBBQAq7y7heHCHjkOXw85Ok2AeHN4zsc/view?usp=sharing"
+            }
+        ];
+
+        // Variabel global
+        let currentPage = 1;
+        let filteredCards = [...cardsData];
+        const cardsPerPage = 6;
+
+        // Elemen DOM
+        const cardsGrid = document.getElementById('cardsGrid');
+        const paginationContainer = document.getElementById('paginationContainer');
         const searchInput = document.getElementById('searchInput');
+        const tabs = document.querySelectorAll('.nav-tab');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs
-                tabs.forEach(t => t.classList.remove('active'));
-                // Add active class to clicked tab
-                tab.classList.add('active');
-                
-                const selectedCategory = tab.dataset.tab;
-                filterCards(selectedCategory);
-            });
-        });
-
-        // Search functionality
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const activeTab = document.querySelector('.nav-tab.active').dataset.tab;
+        // Fungsi untuk membuat HTML kartu
+        function createCardHTML(card) {
+            const tagClass = card.category === 'analisis-kajian' ? 'tag-analisis-kajian' : 'tag-eksplorasi-teori';
+            const tagText = card.category === 'analisis-kajian' ? 'Analisis Dan Kajian' : 'Eksplorasi Teori';
+            const tagfree = card.free === 'free' ? 'tag-free' : 'tag-premium';
+            const tagfreeText = card.free === 'free' ? 'Gratis' : 'Premium';
             
-            cards.forEach(card => {
-                const title = card.querySelector('.card-title').textContent.toLowerCase();
-                const author = card.querySelector('.card-author').textContent.toLowerCase();
-                const matchesSearch = title.includes(searchTerm) || author.includes(searchTerm);
-                const matchesCategory = activeTab === 'semua' || card.dataset.category === activeTab;
-                
-                if (matchesSearch && matchesCategory) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeInUp 0.3s ease forwards';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
+            return `
+                <div class="card" data-category="${card.category}" data-link="${card.link}">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <span><img src="${card.image}" alt="" onerror="this.parentElement.innerHTML='No Image'"></span>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">${card.title}</h3>
+                            <p class="card-author">${card.author}</p>
+                            <div class="category">
+                                <span class="card-tag ${tagClass}">${tagText}</span>
+                                <span class="card-tag ${tagfree}">${tagfreeText}</span>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
-        // Filter cards by category
-        function filterCards(category) {
-            const searchTerm = searchInput.value.toLowerCase();
-            
-            cards.forEach(card => {
-                const title = card.querySelector('.card-title').textContent.toLowerCase();
-                const author = card.querySelector('.card-author').textContent.toLowerCase();
-                const matchesSearch = searchTerm === '' || title.includes(searchTerm) || author.includes(searchTerm);
-                const matchesCategory = category === 'semua' || card.dataset.category === category;
-                
-                if (matchesSearch && matchesCategory) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeInUp 0.3s ease forwards';
-                } else {
-                    card.style.display = 'none';
-                }
+        // Fungsi untuk merender kartu
+        function renderCards() {
+            const startIndex = (currentPage - 1) * cardsPerPage;
+            const endIndex = startIndex + cardsPerPage;
+            const cardsToShow = filteredCards.slice(startIndex, endIndex);
+
+            cardsGrid.innerHTML = cardsToShow.map(card => createCardHTML(card)).join('');
+
+            // Tambahkan event listener untuk klik kartu
+            const cardElements = cardsGrid.querySelectorAll('.card');
+            cardElements.forEach(card => {
+                card.addEventListener('click', () => {
+                    const link = card.getAttribute('data-link');
+                    if (link && link !== '#') {
+                        window.open(link, '_blank');
+                    } else {
+                        const title = card.querySelector('.card-title').textContent;
+                        alert(`Link belum tersedia untuk: ${title}`);
+                    }
+                });
             });
         }
 
-        // Card click functionality
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                const link = card.getAttribute('data-link');
-                if (link) {
-                    // Membuka link di tab baru
-                    window.open(link, '_blank');
-                } else {
-                    // Fallback jika tidak ada link
-                    const title = card.querySelector('.card-title').textContent;
-                    alert(`Link belum tersedia untuk: ${title}`);
+        // Fungsi untuk membuat pagination
+        function createPagination() {
+            const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
+            
+            if (totalPages <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+
+            let paginationHTML = '';
+
+            // Tombol Previous
+            const prevDisabled = currentPage === 1 ? 'disabled' : '';
+            paginationHTML += `
+                <button class="pagination-nav ${prevDisabled}" onclick="goToPage(${currentPage - 1})">
+                    ← Previous
+                </button>
+            `;
+
+            // Logic untuk menampilkan nomor halaman
+            const maxVisiblePages = 5;
+            
+            if (totalPages <= maxVisiblePages) {
+                // Jika total halaman <= 5, tampilkan semua
+                for (let i = 1; i <= totalPages; i++) {
+                    const activeClass = i === currentPage ? 'active' : '';
+                    paginationHTML += `
+                        <button class="pagination-btn ${activeClass}" onclick="goToPage(${i})">
+                            ${i}
+                        </button>
+                    `;
                 }
+            } else {
+                // Logic untuk smart pagination
+                if (currentPage <= 3) {
+                    // Tampilkan 1, 2, 3, ..., last
+                    for (let i = 1; i <= 3; i++) {
+                        const activeClass = i === currentPage ? 'active' : '';
+                        paginationHTML += `
+                            <button class="pagination-btn ${activeClass}" onclick="goToPage(${i})">
+                                ${i}
+                            </button>
+                        `;
+                    }
+                    paginationHTML += `<span class="pagination-ellipsis">...</span>`;
+                    paginationHTML += `
+                        <button class="pagination-btn" onclick="goToPage(${totalPages})">
+                            ${totalPages}
+                        </button>
+                    `;
+                } else if (currentPage >= totalPages - 2) {
+                    // Tampilkan first, ..., n-2, n-1, n
+                    paginationHTML += `
+                        <button class="pagination-btn" onclick="goToPage(1)">
+                            1
+                        </button>
+                    `;
+                    paginationHTML += `<span class="pagination-ellipsis">...</span>`;
+                    for (let i = totalPages - 2; i <= totalPages; i++) {
+                        const activeClass = i === currentPage ? 'active' : '';
+                        paginationHTML += `
+                            <button class="pagination-btn ${activeClass}" onclick="goToPage(${i})">
+                                ${i}
+                            </button>
+                        `;
+                    }
+                } else {
+                    // Tampilkan first, ..., current-1, current, current+1, ..., last
+                    paginationHTML += `
+                        <button class="pagination-btn" onclick="goToPage(1)">
+                            1
+                        </button>
+                    `;
+                    paginationHTML += `<span class="pagination-ellipsis">...</span>`;
+                    
+                    for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                        const activeClass = i === currentPage ? 'active' : '';
+                        paginationHTML += `
+                            <button class="pagination-btn ${activeClass}" onclick="goToPage(${i})">
+                                ${i}
+                            </button>
+                        `;
+                    }
+                    
+                    paginationHTML += `<span class="pagination-ellipsis">...</span>`;
+                    paginationHTML += `
+                        <button class="pagination-btn" onclick="goToPage(${totalPages})">
+                            ${totalPages}
+                        </button>
+                    `;
+                }
+            }
+
+            // Tombol Next
+            const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+            paginationHTML += `
+                <button class="pagination-nav ${nextDisabled}" onclick="goToPage(${currentPage + 1})">
+                    Next →
+                </button>
+            `;
+
+            paginationContainer.innerHTML = paginationHTML;
+        }
+
+        // Fungsi untuk pindah halaman
+        function goToPage(page) {
+            const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
+            
+            if (page < 1 || page > totalPages || page === currentPage) {
+                return;
+            }
+            
+            currentPage = page;
+            renderCards();
+            createPagination();
+            
+            // Scroll ke atas setelah pindah halaman
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Fungsi untuk filter berdasarkan kategori
+        function filterByCategory(category) {
+            if (category === 'semua') {
+                filteredCards = [...cardsData];
+            } else {
+                filteredCards = cardsData.filter(card => card.category === category);
+            }
+            currentPage = 1;
+            renderCards();
+            createPagination();
+        }
+
+        // Fungsi untuk pencarian
+        function searchCards(query) {
+            const searchTerm = query.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                // Jika pencarian kosong, filter berdasarkan tab aktif
+                const activeTab = document.querySelector('.nav-tab.active').getAttribute('data-tab');
+                filterByCategory(activeTab);
+            } else {
+                // Filter berdasarkan judul dan author
+                filteredCards = cardsData.filter(card => 
+                    card.title.toLowerCase().includes(searchTerm) ||
+                    card.author.toLowerCase().includes(searchTerm)
+                );
+                currentPage = 1;
+                renderCards();
+                createPagination();
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render initial cards
+            renderCards();
+            createPagination();
+
+            // Tab navigation
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter cards
+                    const category = this.getAttribute('data-tab');
+                    filterByCategory(category);
+                });
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                searchCards(this.value);
+            });
+
+            // Search on Enter key
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchCards(this.value);
+                }
+            });
+
+            // Dropdown functionality
+            const dropdown = document.getElementById('umtDropdown');
+            const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+            
+            dropdownToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdown.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+
+            // Close dropdown when clicking on menu items
+            const dropdownItems = dropdown.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    dropdown.classList.remove('active');
+                });
             });
         });
 
-        // Search icon click
-        document.querySelector('.search-icon').addEventListener('click', () => {
-            searchInput.focus();
-        });
-
-        // Dropdown functionality
-        const dropdown = document.getElementById('umtDropdown');
-        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
-
-        dropdownToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            dropdown.classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
+        // Keyboard navigation untuk pagination
+        document.addEventListener('keydown', function(e) {
+            const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
+            
+            if (e.key === 'ArrowLeft' && currentPage > 1) {
+                goToPage(currentPage - 1);
+            } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+                goToPage(currentPage + 1);
             }
-        });
-
-        // Prevent dropdown from closing when clicking inside the menu
-        dropdown.querySelector('.dropdown-menu').addEventListener('click', (e) => {
-            e.stopPropagation();
         });
     </script>
 </body>
